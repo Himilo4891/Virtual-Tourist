@@ -66,7 +66,7 @@ class TravelViewController: UIViewController, UIGestureRecognizerDelegate, NSFet
         fetchRequest.predicate = andPredicate
         let sortDescriptor = NSSortDescriptor(key: "newDate", ascending: true)
         fetchRequest.sortDescriptors = [sortDescriptor]
-        fetchedResultController = NSFetchedResultsController<NSFetchRequestResult>(fetchRequest: fetchRequest, managedObjectContext: dataController.viewContext, sectionNameKeyPath: nil, cacheName: "pins")
+        fetchedResultController = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: dataController.viewContext, sectionNameKeyPath: nil, cacheName: "pins")
         
         fetchedResultController.delegate = self
         do {
@@ -297,9 +297,9 @@ extension TravelViewController: MKMapViewDelegate {
             
             let thisCoordinate = annotation.coordinate
             mapView.deselectAnnotation(annotation, animated: true)
-            for pin in pins  {
+            for pin in pins as! [Pin] {
                 if pin.latitude == thisCoordinate.latitude && pin.longitude == thisCoordinate.longitude {
-                    PhotoAlbumViewController.longitude == pin
+//                    PhotoAlbumViewController.longitude == pin
                     //setUpFetchController(lat: pin.latitude, lon: pin.longitude)                    //performSegue(withIdentifier: "Album", sender: pin) //Sending the Pin through segue!
                     setupFetchedResultsController(latitude: thisCoordinate.latitude, longitude: thisCoordinate.longitude)
                     for annotation in self.mapView.annotations {

@@ -12,6 +12,7 @@ import CoreData
 class PhotoAlbumViewController: UIViewController, NSFetchedResultsControllerDelegate{
     
     var photoURLs: [URL?] = []
+  
     
     var pins: [NSManagedObject] = []
     
@@ -31,9 +32,9 @@ class PhotoAlbumViewController: UIViewController, NSFetchedResultsControllerDele
         
         var dataController: DataController!
         var blockOperation = BlockOperation()
-        var Pin: Pin!
+        var pin: Pin!
         let activ: UIActivityIndicatorView = UIActivityIndicatorView()
-        var fetchedController: NSFetchedResultsController<Photo>!
+        var fetchedController: NSFetchedResultsController<Photos>!
         var photo: [NSManagedObject] = []
         
         fileprivate func setUpMap() {
@@ -86,7 +87,7 @@ class PhotoAlbumViewController: UIViewController, NSFetchedResultsControllerDele
         }
         
         func checkExistsPhotos(latitud: Double, longitude: Double ) -> Bool{
-            let fetchRequest: NSFetchRequest<Photos> = photos.fetchRequest()
+            let fetchRequest: NSFetchRequest<Photos> = Photos.fetchRequest()
             let predicate = NSPredicate(format: "latitude == %@ AND longitude == %@", argumentArray: [self.latitude!,self.longitude!])
             fetchRequest.predicate = predicate
             
@@ -132,7 +133,7 @@ class PhotoAlbumViewController: UIViewController, NSFetchedResultsControllerDele
             fetchedController = nil
        
         }
-        @IBAction func newCollection(_ sender: UIButton){
+        @IBAction func NewCollection(_ sender: UIButton){
             
             if let result = fetchedController.fetchedObjects {
                          for photo in result {
@@ -155,27 +156,20 @@ class PhotoAlbumViewController: UIViewController, NSFetchedResultsControllerDele
                 }
             }
        
-        func deleteArrray(entity:String) {
-            let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "Photos")
-            fetchRequest.returnsObjectsAsFaults = false
-            do {
-                let result = try dataController.viewContext.fetch(fetchRequest)
-                for object in result{
-                    guard let objectData = object as? NSManagedObject else{
-                      continue}
-                    dataController.viewContext.delete(objectData)
-                }
-            }catch let error{
-                print("borr6ar toda la data\(entity) error :",error)
+    func deleteArrray(entity:String) {
+        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "Photos")
+        fetchRequest.returnsObjectsAsFaults = false
+        do {
+            let result = try dataController.viewContext.fetch(fetchRequest)
+            for object in result{
+                guard let objectData = object as? NSManagedObject else{
+                    continue}
+                dataController.viewContext.delete(objectData)
             }
+        }catch let error{
+            print("borr6ar toda la data\(entity) error :",error)
         }
-            
-            
-                
-                
-                
-            
-             
+    }
              func setUpNewCollectionButton(isEnable: Bool) {
                  newCollectionbutton.isEnabled = isEnable
              }
@@ -191,9 +185,9 @@ class PhotoAlbumViewController: UIViewController, NSFetchedResultsControllerDele
             fetchRequest.predicate = predicate
                       fetchRequest.sortDescriptors = [NSSortDescriptor(key: "photoOrder", ascending: true)]
 
-             fetchedController = NSFetchedResultsController<NSFetchRequestResult>(fetchRequest: fetchRequest, managedObjectContext: dataController.viewContext, sectionNameKeyPath: nil, cacheName: nil)
-                      fetchedController.delegate = self
-                      do {
+             fetchedController = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: dataController.viewContext, sectionNameKeyPath: nil, cacheName: nil)
+                    fetchedController.delegate = self
+                    do {
                           try fetchedController.performFetch()
                       } catch {
                           fatalError("The fetch could not be performed: \(error.localizedDescription)")
@@ -224,14 +218,12 @@ class PhotoAlbumViewController: UIViewController, NSFetchedResultsControllerDele
                         
                         let url =  "https://farm\(element.farm).static.flickr.com/\(element.server)/\(element.id)_\(element.secret).jpg"
                         let photos = Photo(from: self.dataController.viewContext as! Decoder)
-                        photos.Pins = self.Pin
+                        photos.pin = self.pin
                         photos.latitude = self.latitude!
                         photos.longitude = self.longitude!
                         try? self.dataController.viewContext.save()
                         self.PhotoCollectionViewController.reloadData()
                         photos.url = url
-                        
-
                         self.photosDb.append(photos)
                         print("aqui están las fotos de la DB", self.photosDb.count)
                         self.PhotoCollectionViewController.reloadData()

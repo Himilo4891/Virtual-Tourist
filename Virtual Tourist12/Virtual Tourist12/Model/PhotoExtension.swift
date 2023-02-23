@@ -98,10 +98,10 @@ extension PhotoAlbumViewController: UICollectionViewDataSource, UICollectionView
                         
                          try? self.dataController.viewContext.save()
                         let imageData = try? Data(contentsOf: url!)
-                        cell.photo.image = UIImage(data: imageData!)
+                        cell.photos.image = UIImage(data: imageData!)
                         cell.cellActivityIndicator.stopAnimating()
                     DispatchQueue.main.async {
-                                cell.photo.image = UIImage(data: data!)
+                                cell.photos.image = UIImage(data: data!)
                                 cell.cellActivityIndicator.stopAnimating()
                             //}
                         }

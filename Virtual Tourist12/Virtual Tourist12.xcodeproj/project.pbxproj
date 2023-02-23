@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2A860AB729A741EE001E8CF0 /* VirtualTourist.xcdatamodel in Sources */ = {isa = PBXBuildFile; fileRef = 2A860AB629A741EE001E8CF0 /* VirtualTourist.xcdatamodel */; };
 		2ACA1E1729A3B07900BABEE8 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2ACA1E1629A3B07900BABEE8 /* AppDelegate.swift */; };
 		2ACA1E1929A3B07900BABEE8 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2ACA1E1829A3B07900BABEE8 /* SceneDelegate.swift */; };
 		2ACA1E1B29A3B07900BABEE8 /* TravelViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2ACA1E1A29A3B07900BABEE8 /* TravelViewController.swift */; };
@@ -45,6 +46,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		2A860AB629A741EE001E8CF0 /* VirtualTourist.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = VirtualTourist.xcdatamodel; sourceTree = "<group>"; };
 		2ACA1E1329A3B07900BABEE8 /* Virtual Tourist12.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Virtual Tourist12.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2ACA1E1629A3B07900BABEE8 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		2ACA1E1829A3B07900BABEE8 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -118,6 +120,7 @@
 			isa = PBXGroup;
 			children = (
 				2ACA1E1629A3B07900BABEE8 /* AppDelegate.swift */,
+				2A860AB629A741EE001E8CF0 /* VirtualTourist.xcdatamodel */,
 				2ACA1E1829A3B07900BABEE8 /* SceneDelegate.swift */,
 				2ACA1E4B29A3CEE200BABEE8 /* Controller */,
 				2ACA1E4C29A3CF0C00BABEE8 /* Model */,
@@ -160,9 +163,9 @@
 			isa = PBXGroup;
 			children = (
 				2ACA1E4D29A3CF2A00BABEE8 /* APIManager.swift */,
-				2ACA1E4F29A3CF5C00BABEE8 /* Alerta.swift */,
-				2ACA1E5129A3CF8B00BABEE8 /* DataController.swift */,
 				2ACA1E5329A3CFC000BABEE8 /* PhotosResponse.swift */,
+				2ACA1E5129A3CF8B00BABEE8 /* DataController.swift */,
+				2ACA1E4F29A3CF5C00BABEE8 /* Alerta.swift */,
 				2ACA1E5529A3D00C00BABEE8 /* PhotoExtension.swift */,
 				2ACA1E5729A3D0A600BABEE8 /* CellCollectionViewCollectionViewCell.swift */,
 				2ACA1E5929A3D0EE00BABEE8 /* extencion.swift */,
@@ -310,6 +313,7 @@
 				2ACA1E5629A3D00C00BABEE8 /* PhotoExtension.swift in Sources */,
 				2ACA1E5829A3D0A600BABEE8 /* CellCollectionViewCollectionViewCell.swift in Sources */,
 				2ACA1E1929A3B07900BABEE8 /* SceneDelegate.swift in Sources */,
+				2A860AB729A741EE001E8CF0 /* VirtualTourist.xcdatamodel in Sources */,
 				2ACA1E5029A3CF5C00BABEE8 /* Alerta.swift in Sources */,
 				2ACA1E5229A3CF8B00BABEE8 /* DataController.swift in Sources */,
 				2ACA1E5A29A3D0EE00BABEE8 /* extencion.swift in Sources */,
